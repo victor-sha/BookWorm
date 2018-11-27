@@ -2,6 +2,7 @@ import React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import BootstrapTable from "react-bootstrap-table-next";
+import history from "../history";
 
 const columns = [
   {
@@ -29,6 +30,11 @@ const AUTHORS = gql`
   }
 `;
 
+const rowEvents = {
+  onClick: (_, __, rowIndex) =>
+    history.push(`${history.location.pathname}/${rowIndex}`)
+};
+
 const Authors = () => (
   <Query query={AUTHORS}>
     {({ loading, error, data }) => {
@@ -43,9 +49,9 @@ const Authors = () => (
           keyField="id"
           data={data.authors}
           columns={columns}
+          rowEvents={rowEvents}
         />
       );
-      // <p>{JSON.stringify(data.authors)}</p>;
     }}
   </Query>
 );
