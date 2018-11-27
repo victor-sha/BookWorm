@@ -17,6 +17,10 @@ class AuthorAPI extends RESTDataSource {
   async getAuthorById({ id }) {
     return await this.get(`authors/${id}`);
   }
+
+  async getBooksByIds({ ids }) {
+    return await Promise.all(ids.map(id => this.get(`books/${id}`)));
+  }
 }
 
 module.exports = AuthorAPI;

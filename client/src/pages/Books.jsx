@@ -7,31 +7,30 @@ import { redirectOnClick } from "../utils/table";
 const columns = [
   {
     dataField: "id",
-    text: "Author ID"
+    text: "Book ID"
   },
   {
-    dataField: "firstName",
+    dataField: "name",
+    text: "Название книги"
+  },
+  {
+    dataField: "author",
     text: "Автор"
-  },
-  {
-    dataField: "countBooks",
-    text: "Количество книг"
   }
 ];
 
-const AUTHORS = gql`
+const BOOKS = gql`
   {
-    authors {
+    books {
       id
-      firstName
-      lastName
-      countBooks
+      name
+      publicationDate
     }
   }
 `;
 
-const Authors = () => (
-  <Query query={AUTHORS}>
+const Books = () => (
+  <Query query={BOOKS}>
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;
@@ -42,7 +41,7 @@ const Authors = () => (
           striped
           hover
           keyField="id"
-          data={data.authors}
+          data={data.books}
           columns={columns}
           rowEvents={{ onClick: redirectOnClick }}
         />
@@ -51,4 +50,4 @@ const Authors = () => (
   </Query>
 );
 
-export default Authors;
+export default Books;

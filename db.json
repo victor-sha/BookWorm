@@ -18,7 +18,7 @@
     {
       "id": 2,
       "firstName": "Arthur",
-      "lastName": "Conan",
+      "lastName": "Conan Doile",
       "biography": "once apon a time..",
       "countBooks": 23,
       "books": [
@@ -36,7 +36,15 @@
       "id": 1,
       "name": "Harry Potter 1",
       "publicationDate": "1998",
+      "authorId": 1,
       "description": "Жил-был Гарри Поттер и была у него мечта.... "
+    },
+    {
+      "id": 2,
+      "name": "Sherlok Holmes",
+      "publicationDate": "1898",
+      "authorId": 2,
+      "description": "Жил-был Шерлок Холмс и была у него мечта.... "
     }
   ]
 }
