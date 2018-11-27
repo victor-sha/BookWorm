@@ -1,10 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import ApolloClient from "apollo-boost";
-import { Query, ApolloProvider } from "react-apollo";
-import gql from "graphql-tag";
-
-import App from "./App";
+import { ApolloProvider } from "react-apollo";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Pages from "./pages";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql"
@@ -12,7 +11,7 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <App />
+    <Pages />
   </ApolloProvider>,
   document.getElementById("root")
 );

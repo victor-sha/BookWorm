@@ -18,11 +18,6 @@ const columns = [
   }
 ];
 
-const products = [{ id: 1, name: "hello", price: 23.3 }];
-
-// const renderAuthorsPage = () => (
-//   <BootstrapTable keyField="id" data={products} columns={columns} />
-// );
 const AUTHORS = gql`
   {
     authors {
@@ -34,18 +29,25 @@ const AUTHORS = gql`
   }
 `;
 
-const renderAuthorsPage = () => (
+const Authors = () => (
   <Query query={AUTHORS}>
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;
 
       return (
-        <BootstrapTable keyField="id" data={data.authors} columns={columns} />
+        <BootstrapTable
+          bootstrap4
+          striped
+          hover
+          keyField="id"
+          data={data.authors}
+          columns={columns}
+        />
       );
       // <p>{JSON.stringify(data.authors)}</p>;
     }}
   </Query>
 );
 
-export default renderAuthorsPage;
+export default Authors;
