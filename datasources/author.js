@@ -3,7 +3,7 @@ const { RESTDataSource } = require("apollo-datasource-rest");
 class AuthorAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = "http://localhost:3000/";
+    this.baseURL = "http://localhost:4004/";
   }
 
   authorReducer(author) {
@@ -15,7 +15,6 @@ class AuthorAPI extends RESTDataSource {
   }
 
   async getAuthorById({ id }) {
-    console.log("api id", id);
     return await this.get(`authors/${id}`);
   }
 }
