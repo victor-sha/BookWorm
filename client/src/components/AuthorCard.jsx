@@ -5,7 +5,7 @@ import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 const AuthorCard = ({ firstName, lastName, biography }) => (
   <>
     <h1>Автор</h1>
-    <Card body inverse color="secondary">
+    <Card body outline color="primary">
       <CardBody>
         <CardTitle>{`${firstName} ${lastName}`}</CardTitle>
         <CardText>Биография: {biography}</CardText>

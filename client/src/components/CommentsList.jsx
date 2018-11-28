@@ -2,15 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
-import { ListGroup, ListGroupItem, Container } from "reactstrap";
+import { compose, withStateHandlers } from "recompose";
+import { Button, Container } from "reactstrap";
 
 import Comment from "./Comment";
 
 const commentsArr = [{ id: 1 }, { id: 2 }];
 
 const GET_BOOKS_COMMENTS = gql`
-  query getAllComments {
-    comments {
+  query getCommentsByPage($pageNum: Int) {
+    comments(pageNum: $pageNum) {
       id
       author
       comment
@@ -18,22 +19,34 @@ const GET_BOOKS_COMMENTS = gql`
   }
 `;
 
-const CommentsList = () => (
-  <Query query={GET_BOOKS_COMMENTS}>
+const CommentsList = ({ pageNum, firstButtonClick, secondButtonClick }) => (
+  <Query query={GET_BOOKS_COMMENTS} variables={{ pageNum }}>
     {({ data: { comments }, loading, error }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>ERROR: {error.message}</p>;
 
       return (
-        <Container>
-          Комментарии
+        <Container className="mt-2">
+          <h2>Комментарии</h2>
           {comments.map(comment => (
             <div key={comment.id}>
-              {/* <ListGroupItem> */}
               <Comment author={comment.author} comment={comment.comment} />
-              {/* </ListGroupItem> */}
             </div>
           ))}
+          <p className="float-right mt-2">
+            <Button
+              color={pageNum === 1 ? "primary" : "light"}
+              onClick={firstButtonClick}
+            >
+              1
+            </Button>
+            <Button
+              color={pageNum === 2 ? "primary" : "light"}
+              onClick={secondButtonClick}
+            >
+              2
+            </Button>
+          </p>
         </Container>
       );
     }}
@@ -48,4 +61,18 @@ CommentsList.propTypes = {
   comments: PropTypes.array
 };
 
-export default CommentsList;
+export default compose(
+  withStateHandlers(
+    ({ initialPageNum = 1 }) => ({
+      pageNum: initialPageNum
+    }),
+    {
+      firstButtonClick: () => () => ({
+        pageNum: 1
+      }),
+      secondButtonClick: () => () => ({
+        pageNum: 2
+      })
+    }
+  )
+)(CommentsList);

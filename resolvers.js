@@ -7,8 +7,8 @@ module.exports = {
     books: async (_, __, { dataSources }) => dataSources.bookAPI.getAllBooks(),
     book: async (_, { id }, { dataSources }) =>
       dataSources.bookAPI.getBookById({ id }),
-    comments: async (_, __, { dataSources }) =>
-      dataSources.commentAPI.getAllComments(),
+    comments: async (_, { pageNum }, { dataSources }) =>
+      dataSources.commentAPI.getCommentsByPage({ pageNum }),
     comment: async (_, { id }, { dataSources }) =>
       dataSources.commentAPI.getCommentById({ id })
   }

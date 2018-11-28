@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
-import { Navbar, NavbarBrand, NavItem, Nav, NavLink } from "reactstrap";
+import { Navbar, NavbarBrand, NavItem, Nav } from "reactstrap";
+import { NavLink } from "react-router-dom";
 import { Container } from "reactstrap";
 
 export default function PageContainer(props) {
@@ -9,10 +10,24 @@ export default function PageContainer(props) {
         <NavbarBrand href="/">BookWorm</NavbarBrand>
         <Nav className="mr-auto" navbar>
           <NavItem>
-            <NavLink href="/authors">Авторы</NavLink>
+            <NavLink
+              // className="nav-item"
+              // activeClassName="active"
+              style={{ color: "grey" }}
+              activeStyle={{ color: "blue" }}
+              to="/authors"
+            >
+              Авторы
+            </NavLink>
           </NavItem>
-          <NavItem>
-            <NavLink href="/books">Книги</NavLink>
+          <NavItem className="ml-2">
+            <NavLink
+              style={{ color: "grey" }}
+              activeStyle={{ color: "blue" }}
+              to="/books"
+            >
+              Книги
+            </NavLink>
           </NavItem>
         </Nav>
       </Navbar>

@@ -7,7 +7,7 @@ const typeDefs = gql`
     book(id: ID!): Book
     books: [Book]
     comment(id: ID!): Comment
-    comments: [Comment]
+    comments(pageNum: Int): [Comment]
     me: User
   }
 
