@@ -25,6 +25,7 @@ const BOOKS = gql`
       id
       name
       publicationDate
+      author
     }
   }
 `;

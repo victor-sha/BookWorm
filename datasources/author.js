@@ -7,15 +7,18 @@ class AuthorAPI extends RESTDataSource {
   }
 
   authorReducer(author) {
-    return author;
+    return { ...author, fullName: author.firstName + " " + author.lastName };
   }
 
   async getAllAuthors() {
-    return await this.get("authors");
+    const res = await this.get("authors");
+    return res && res.length
+      ? res.map(author => this.authorReducer(author))
+      : [];
   }
 
   async getAuthorById({ id }) {
-    return await this.get(`authors/${id}`);
+    return await this.get(`authors/${id}`).then(res => this.authorReducer(res));
   }
 
   async getBooksByIds({ ids }) {

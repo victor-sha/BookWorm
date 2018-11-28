@@ -6,6 +6,8 @@ const typeDefs = gql`
     author(id: ID!): Author
     book(id: ID!): Book
     books: [Book]
+    comment(id: ID!): Comment
+    comments: [Comment]
     me: User
   }
 
@@ -17,6 +19,7 @@ const typeDefs = gql`
     id: ID!
     firstName: String!
     lastName: String!
+    fullName: String
     biography: String
     countBooks: Int!
     books: [Book]
@@ -31,18 +34,16 @@ const typeDefs = gql`
     id: ID!
     name: String!
     authorId: ID!
-    author: Author
+    author: String
     publicationDate: String
     description: String
   }
-`;
 
-// const resolvers = {
-//   Query: {
-//     author(parent, args, context, info) {
-//       return
-//     }
-//   }
-// }
+  type Comment {
+    id: ID!
+    author: String!
+    comment: String!
+  }
+`;
 
 module.exports = typeDefs;

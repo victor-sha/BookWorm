@@ -4,14 +4,14 @@
       "id": 1,
       "firstName": "Joahn",
       "lastName": "Rolling",
-      "biography": "once apon a time..",
+      "biography": "once apon a time.. ",
       "countBooks": 2,
       "books": [
         {
           "id": 1,
           "name": "Harry Potter 1",
           "publicationDate": "1998",
-          "description": "Жил-был Гарри Поттер и была у него мечта.... "
+          "description": "Жил-был Гарри Поттер и была у него мечта.... Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, inventore."
         }
       ]
     },
@@ -26,7 +26,7 @@
           "id": 2,
           "name": "Sherlok Holmes",
           "publicationDate": "1898",
-          "description": "Жил-был Шерлок Холмс и была у него мечта.... "
+          "description": "Жил-был Шерлок Холмс и была у него мечта.... Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, inventore."
         }
       ]
     }
@@ -37,14 +37,83 @@
       "name": "Harry Potter 1",
       "publicationDate": "1998",
       "authorId": 1,
-      "description": "Жил-был Гарри Поттер и была у него мечта.... "
+      "author": "Joahn Rolling",
+      "description": "Жил-был Гарри Поттер и была у него мечта.... Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, inventore."
     },
     {
       "id": 2,
       "name": "Sherlok Holmes",
       "publicationDate": "1898",
       "authorId": 2,
-      "description": "Жил-был Шерлок Холмс и была у него мечта.... "
+      "author": "Arthur Conan Doile",
+      "description": "Жил-был Шерлок Холмс и была у него мечта.... Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, inventore. "
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "author": "John Snow",
+      "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, inventore."
+    },
+    {
+      "id": 2,
+      "author": "Martin Luter Kinkg",
+      "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, inventore."
+    },
+    {
+      "id": 3,
+      "author": "Don Carleone",
+      "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, inventore."
+    },
+    {
+      "id": 4,
+      "author": "Will Smith",
+      "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, inventore."
+    },
+    {
+      "id": 5,
+      "author": "Carlos Castaneda",
+      "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, inventore."
+    },
+    {
+      "id": 6,
+      "author": "El Zorro",
+      "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, inventore."
+    },
+    {
+      "id": 7,
+      "author": "John Favro",
+      "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, inventore."
+    },
+    {
+      "id": 8,
+      "author": "Алекс",
+      "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, inventore."
+    },
+    {
+      "id": 9,
+      "author": "Виталик",
+      "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, inventore."
+    },
+    {
+      "id": 10,
+      "author": "Тимур",
+      "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, inventore."
+    },
+    {
+      "id": 11,
+      "author": "Денчик",
+      "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, inventore."
+    },
+    {
+      "id": 12,
+      "author": "Катюша",
+      "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, inventore."
+    },
+    {
+      "id": 13,
+      "author": "Серега",
+      "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, inventore."
     }
   ]
 }

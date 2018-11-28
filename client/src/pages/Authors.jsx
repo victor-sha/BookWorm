@@ -10,7 +10,7 @@ const columns = [
     text: "Author ID"
   },
   {
-    dataField: "firstName",
+    dataField: "fullName",
     text: "Автор"
   },
   {
@@ -25,6 +25,7 @@ const AUTHORS = gql`
       id
       firstName
       lastName
+      fullName
       countBooks
     }
   }
