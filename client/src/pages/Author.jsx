@@ -2,6 +2,8 @@ import React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import BootstrapTable from "react-bootstrap-table-next";
+import filterFactory, { textFilter } from "react-bootstrap-table2-filter";
+import { redirectOnClick } from "../utils/table";
 import { Container } from "reactstrap";
 import { AuthorCard } from "../components";
 
@@ -18,11 +20,22 @@ const GET_AUTHOR_DETAILES = gql`
 const columns = [
   {
     dataField: "name",
-    text: "Название книги"
+    text: "Название книги",
+    sort: true,
+    filter: textFilter()
   },
   {
     dataField: "publicationDate",
-    text: "Дата выхода"
+    text: "Дата выхода, год",
+    sort: true,
+    filter: textFilter()
+  }
+];
+
+const defaultSorted = [
+  {
+    dataField: "name",
+    order: "desc"
   }
 ];
 
@@ -65,6 +78,9 @@ const Author = ({ match }) => {
                 keyField="id"
                 data={[data.book]}
                 columns={columns}
+                // rowEvents={{ onClick: redirectOnClick }}
+                defaultSorted={defaultSorted}
+                filter={filterFactory()}
               />
             );
           }}

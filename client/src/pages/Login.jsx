@@ -23,9 +23,8 @@ export default function Login({ handleAuth }) {
     >
       {(login, { loading, error }) => {
         if (loading) return "Loading...";
-        if (error) return <p>An error occurred</p>;
 
-        return <LoginForm login={login} />;
+        return <LoginForm login={login} error={error} />;
       }}
     </Mutation>
   );

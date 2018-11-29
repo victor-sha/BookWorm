@@ -28,9 +28,7 @@ export default function PageContainer(props) {
             </NavLink>
           </NavItem>
           <NavItem className="ml-2">
-            <Button onClick={() => props.handleAuth({ auth: false })}>
-              Выйти
-            </Button>
+            <a onClick={() => props.handleAuth({ auth: false })}>Выйти</a>
             {/* <NavLink
               style={{ color: "grey" }}
               activeStyle={{ color: "blue" }}

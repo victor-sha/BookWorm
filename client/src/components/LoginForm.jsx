@@ -52,36 +52,50 @@ class LoginPage extends Component {
   render() {
     return (
       <>
-        <div className="mx-auto" style={{ marginTop: "100px", width: "30rem" }}>
-          <h2>Книги и Авторы</h2>
-          <form onSubmit={this.handleSubmit}>
-            {this.state.error && (
-              <h3 data-test="error" onClick={this.dismissError}>
-                <button onClick={this.dismissError}>✖</button>
-                {this.state.error}
-              </h3>
-            )}
-            <FormGroup>
-              <Label>Логин</Label>
-              <Input
-                type="text"
-                data-test="username"
-                value={this.state.username}
-                onChange={this.handleUserChange}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label>Пароль</Label>
-              <Input
-                type="password"
-                data-test="password"
-                value={this.state.password}
-                onChange={this.handlePassChange}
-              />
-            </FormGroup>
+        <div
+          className="card mx-auto"
+          style={{ marginTop: "100px", width: "30rem" }}
+        >
+          <div className="card-body">
+            <div className="card-title text-center">
+              <h2>Книги и Авторы</h2>
+            </div>
+            <form onSubmit={this.handleSubmit}>
+              {this.state.error && (
+                <h3 data-test="error" onClick={this.dismissError}>
+                  <button onClick={this.dismissError}>✖</button>
+                  {this.state.error}
+                </h3>
+              )}
+              <FormGroup>
+                <Label>Логин</Label>
+                <Input
+                  type="text"
+                  data-test="username"
+                  placeholder="admin"
+                  value={this.state.username}
+                  onChange={this.handleUserChange}
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label>Пароль</Label>
+                <Input
+                  type="password"
+                  data-test="password"
+                  placeholder="admin"
+                  value={this.state.password}
+                  onChange={this.handlePassChange}
+                />
+              </FormGroup>
 
-            <Button type="submit">Войти</Button>
-          </form>
+              <button className="btn btn-primary w-100" type="submit">
+                Войти
+              </button>
+              {this.props.error && (
+                <p className="text-danger">"Не правильный логин/пароль"</p>
+              )}
+            </form>
+          </div>
         </div>
       </>
     );

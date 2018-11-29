@@ -17,6 +17,7 @@ export default class Pages extends React.Component {
 
   handleAuth = ({ auth }) => {
     this.setState({ auth });
+    localStorage.removeItem("token");
     history.push("/login");
   };
 
@@ -33,9 +34,11 @@ export default class Pages extends React.Component {
             <Route exact path="/authors" component={Authors} />
           </PageContainer>
         ) : (
-          <Login handleAuth={this.handleAuth} />
+          <>
+            <Login handleAuth={this.handleAuth} />
+            <Redirect to="login" />
+          </>
         )}
-        {/* <Redirect to="login" /> */}
       </>
     );
   }

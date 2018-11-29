@@ -1,3 +1,5 @@
+const { AuthenticationError } = require("apollo-server");
+
 module.exports = {
   Query: {
     authors: async (_, __, { dataSources }) =>
@@ -18,9 +20,11 @@ module.exports = {
     login: async (_, { login, password }, { dataSources }) => {
       const user = await dataSources.userAPI.getUser({ login, password });
       console.log(user);
-      return user && user.length > 0
-        ? "234l4j2kl34j2klrjwioqjaw"
-        : "Не правильный логин/пароль";
+      if (user && user.length > 0) {
+        return "234l4j2kl34j2klrjwioqjaw";
+      } else {
+        throw new AuthenticationError("Не правильный логин/пароль");
+      }
     }
   }
 };
