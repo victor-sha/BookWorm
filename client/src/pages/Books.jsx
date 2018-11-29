@@ -2,20 +2,28 @@ import React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import BootstrapTable from "react-bootstrap-table-next";
+import filterFactory, { textFilter } from "react-bootstrap-table2-filter";
 import { redirectOnClick } from "../utils/table";
 
 const columns = [
   {
-    dataField: "id",
-    text: "Book ID"
-  },
-  {
     dataField: "name",
-    text: "Название книги"
+    text: "Название книги",
+    sort: true,
+    filter: textFilter()
   },
   {
     dataField: "author",
-    text: "Автор"
+    text: "Автор",
+    sort: true,
+    filter: textFilter()
+  }
+];
+
+const defaultSorted = [
+  {
+    dataField: "name",
+    order: "desc"
   }
 ];
 
@@ -45,6 +53,8 @@ const Books = () => (
           data={data.books}
           columns={columns}
           rowEvents={{ onClick: redirectOnClick }}
+          defaultSorted={defaultSorted}
+          filter={filterFactory()}
         />
       );
     }}

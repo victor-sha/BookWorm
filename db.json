@@ -49,6 +49,13 @@
       "description": "Жил-был Шерлок Холмс и была у него мечта.... Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, inventore. "
     }
   ],
+  "users": [
+    {
+      "login": "admin",
+      "password": "admin",
+      "id": 1
+    }
+  ],
   "comments": [
     {
       "id": 1,

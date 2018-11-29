@@ -4,6 +4,7 @@ const resolvers = require("./resolvers");
 const AuthorAPI = require("./datasources/author");
 const BookAPI = require("./datasources/books");
 const CommentAPI = require("./datasources/comments");
+const UserAPI = require("./datasources/users");
 
 const server = new ApolloServer({
   typeDefs,
@@ -11,7 +12,8 @@ const server = new ApolloServer({
   dataSources: () => ({
     authorAPI: new AuthorAPI(),
     bookAPI: new BookAPI(),
-    commentAPI: new CommentAPI()
+    commentAPI: new CommentAPI(),
+    userAPI: new UserAPI()
   })
 });
 

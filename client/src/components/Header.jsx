@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { Navbar, NavbarBrand, NavItem, Nav } from "reactstrap";
 import { NavLink } from "react-router-dom";
-import { Container, Button } from "reactstrap";
 
 export default function PageContainer(props) {
   return (
@@ -11,6 +10,8 @@ export default function PageContainer(props) {
         <Nav className="mr-auto" navbar>
           <NavItem>
             <NavLink
+              // className="nav-item"
+              // activeClassName="active"
               style={{ color: "grey" }}
               activeStyle={{ color: "blue" }}
               to="/authors"
@@ -28,20 +29,16 @@ export default function PageContainer(props) {
             </NavLink>
           </NavItem>
           <NavItem className="ml-2">
-            <Button onClick={() => props.handleAuth({ auth: false })}>
-              Выйти
-            </Button>
-            {/* <NavLink
+            <NavLink
               style={{ color: "grey" }}
               activeStyle={{ color: "blue" }}
               to="/logout"
             >
               Выйти
-            </NavLink> */}
+            </NavLink>
           </NavItem>
         </Nav>
       </Navbar>
-      <Container>{props.children}</Container>
     </Fragment>
   );
 }

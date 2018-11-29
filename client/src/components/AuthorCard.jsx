@@ -7,7 +7,7 @@ const AuthorCard = ({ firstName, lastName, biography }) => (
     <h1>Автор</h1>
     <Card body outline color="primary">
       <CardBody>
-        <CardTitle>{`${firstName} ${lastName}`}</CardTitle>
+        <CardTitle>{`Автор: ${firstName} ${lastName}`}</CardTitle>
         <CardText>Биография: {biography}</CardText>
       </CardBody>
     </Card>

@@ -17,10 +17,6 @@ const GET_AUTHOR_DETAILES = gql`
 
 const columns = [
   {
-    dataField: "id",
-    text: "Book ID"
-  },
-  {
     dataField: "name",
     text: "Название книги"
   },

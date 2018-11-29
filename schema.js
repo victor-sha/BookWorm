@@ -8,11 +8,11 @@ const typeDefs = gql`
     books: [Book]
     comment(id: ID!): Comment
     comments(pageNum: Int): [Comment]
-    me: User
+    user(login: String, password: String): User
   }
 
   type Mutation {
-    login(email: String): String # login token
+    login(login: String, password: String): String # login token
   }
 
   type Author {
@@ -27,7 +27,7 @@ const typeDefs = gql`
 
   type User {
     id: ID!
-    email: String!
+    login: String
   }
 
   type Book {

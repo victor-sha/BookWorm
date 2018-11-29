@@ -8,7 +8,7 @@ const BookCard = ({ id, name, author, publicationDate, description }) => (
     <h1>Книга</h1>
     <Card body outline color="primary">
       <CardBody>
-        <CardTitle>{name}</CardTitle>
+        <CardTitle>Название: {name}</CardTitle>
         <CardSubtitle>
           Автор: <Link to={`/authors/${id}`}>{author}</Link>
         </CardSubtitle>
