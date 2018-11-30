@@ -28,7 +28,13 @@ export default function PageContainer(props) {
             </NavLink>
           </NavItem>
           <NavItem className="ml-2">
-            <a onClick={() => props.handleAuth({ auth: false })}>Выйти</a>
+            <a
+              href="#"
+              onClick={() => props.handleLogout()}
+              style={{ color: "grey" }}
+            >
+              Выйти
+            </a>
             {/* <NavLink
               style={{ color: "grey" }}
               activeStyle={{ color: "blue" }}

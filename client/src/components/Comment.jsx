@@ -1,38 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card, CardBody, CardText, Row, Col, Button } from "reactstrap";
+import { Card, CardBody, Row, Col, CardTitle } from "reactstrap";
 
 const Comment = ({ author, comment }) => (
-  <Card>
-    <CardBody>
-      <Row>
-        <Col md={2}>
-          <img
-            src="/def_face.jpg"
-            className="img img-rounded img-fluid"
-            alt=""
-          />
-        </Col>
-        <Col md={10}>
-          <p>
+  <Row style={{ display: "flex" }}>
+    <Col>
+      <Card>
+        <CardBody>
+          <CardTitle>
+            <i className="fa fa-user-secret fa-2x mx-auto text-secondary" />
             <strong>{author}</strong>
-          </p>
-          <CardText>{comment}</CardText>
-          <p>
-            <Button color="primary" className="float-right ml-2 fas fas-replay">
-              Replay
-            </Button>
-            <Button
-              color="danger"
-              className="float-right text-white fas fas-replay"
-            >
-              Like
-            </Button>
-          </p>
-        </Col>
-      </Row>
-    </CardBody>
-  </Card>
+            <small className="text-muted font-italic"> вчера в 20 часов</small>
+            <div className="float-right">
+              <i className="fa fa-reply text-secondary" />{" "}
+              <i className="fa fa-heart text-danger" />
+            </div>
+          </CardTitle>
+          {comment}
+        </CardBody>
+      </Card>
+    </Col>
+  </Row>
 );
 
 Comment.propTypes = {
