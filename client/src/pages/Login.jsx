@@ -2,7 +2,6 @@ import React from "react";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 
-import history from "../history";
 import { LoginForm } from "../components";
 
 export const LOGIN_USER = gql`

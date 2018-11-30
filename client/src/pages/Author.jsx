@@ -10,6 +10,7 @@ import { AuthorCard } from "../components";
 const GET_AUTHOR_DETAILES = gql`
   query getAuthorDetailes($authorId: ID!) {
     author(id: $authorId) {
+      id
       firstName
       lastName
       biography

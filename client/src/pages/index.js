@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import history from "../history";
 import Authors from "./Authors";
 import Author from "./Author";
@@ -7,8 +7,6 @@ import Books from "./Books";
 import Book from "./Book";
 import Login from "./Login";
 import { PageContainer } from "../components";
-
-const Home = () => <div>HEllo</div>;
 
 export default class Pages extends React.Component {
   state = {
@@ -32,11 +30,11 @@ export default class Pages extends React.Component {
       <>
         {this.state.auth ? (
           <PageContainer handleLogout={this.handleLogout}>
-            <Route exact path="/" component={Home} />
             <Route exact path="/books/:id" component={Book} />
             <Route exact path="/books" component={Books} />
             <Route exact path="/authors/:id" component={Author} />
             <Route exact path="/authors" component={Authors} />
+            <Redirect to="/authors" />
           </PageContainer>
         ) : (
           <>

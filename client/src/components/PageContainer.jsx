@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Navbar, NavbarBrand, NavItem, Nav } from "reactstrap";
 import { NavLink } from "react-router-dom";
-import { Container, Button } from "reactstrap";
+import { Container } from "reactstrap";
 
 export default function PageContainer(props) {
   return (
@@ -27,12 +27,14 @@ export default function PageContainer(props) {
               Книги
             </NavLink>
           </NavItem>
-          <NavItem className="ml-2">
+          <NavItem className="ml-2 float-right">
             <a
               href="#"
               onClick={() => props.handleLogout()}
               style={{ color: "grey" }}
+              // className="btn btn-light"
             >
+              <i className="fa fa-sign-out" />
               Выйти
             </a>
             {/* <NavLink

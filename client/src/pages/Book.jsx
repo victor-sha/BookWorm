@@ -9,6 +9,7 @@ const GET_BOOK_DETAILES = gql`
   query getBookDetailes($bookId: ID!) {
     book(id: $bookId) {
       id
+      authorId
       author {
         fullName
       }

@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import { Card, CardBody, CardTitle, CardText, CardSubtitle } from "reactstrap";
 import { Link } from "react-router-dom";
 
-const BookCard = ({ id, name, author, publicationDate, description }) => (
+const BookCard = ({ name, authorId, author, publicationDate, description }) => (
   <>
     <h1>Книга</h1>
     <Card body outline color="primary">
       <CardBody>
         <CardTitle>Название: {name}</CardTitle>
         <CardSubtitle>
-          Автор: <Link to={`/authors/${id}`}>{author}</Link>
+          Автор: <Link to={`/authors/${authorId}`}>{author}</Link>
         </CardSubtitle>
         <CardText>
           <small className="text-muted">
