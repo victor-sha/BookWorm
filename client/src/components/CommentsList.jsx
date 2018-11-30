@@ -15,6 +15,7 @@ const GET_BOOKS_COMMENTS = gql`
       id
       author
       comment
+      date
     }
   }
 `;
@@ -28,9 +29,9 @@ const CommentsList = ({ pageNum, firstButtonClick, secondButtonClick }) => (
       return (
         <Container className="mt-2">
           <h2>Комментарии</h2>
-          {comments.map(comment => (
-            <div key={comment.id}>
-              <Comment author={comment.author} comment={comment.comment} />
+          {comments.map(({ id, author, comment, date }) => (
+            <div key={id}>
+              <Comment author={author} comment={comment} date={date} />
             </div>
           ))}
           <p className="float-right mt-2">

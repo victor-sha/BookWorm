@@ -3,8 +3,8 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import BootstrapTable from "react-bootstrap-table-next";
 import filterFactory, { textFilter } from "react-bootstrap-table2-filter";
-import { redirectOnClick } from "../utils/table";
 import { Container } from "reactstrap";
+import history from "../history";
 import { AuthorCard } from "../components";
 
 const GET_AUTHOR_DETAILES = gql`
@@ -78,7 +78,9 @@ const Author = ({ match }) => {
                 keyField="id"
                 data={[data.book]}
                 columns={columns}
-                // rowEvents={{ onClick: redirectOnClick }}
+                rowEvents={{
+                  onClick: (_, { id }, __) => history.push(`/books/${id}`)
+                }}
                 defaultSorted={defaultSorted}
                 filter={filterFactory()}
               />

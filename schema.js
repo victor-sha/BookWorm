@@ -43,6 +43,7 @@ const typeDefs = gql`
     id: ID!
     author: String!
     comment: String!
+    date: String
   }
 `;
 
