@@ -19,12 +19,15 @@ module.exports = {
   Mutation: {
     login: async (_, { login, password }, { dataSources }) => {
       const user = await dataSources.userAPI.getUser({ login, password });
-      console.log(user);
       if (user && user.length > 0) {
         return "234l4j2kl34j2klrjwioqjaw";
       } else {
         throw new AuthenticationError("Не правильный логин/пароль");
       }
     }
+  },
+  Author: {
+    books: async ({ booksIds }, _, { dataSources }) =>
+      dataSources.bookAPI.getBooksByIds({ ids: booksIds })
   }
 };

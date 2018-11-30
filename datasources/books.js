@@ -13,7 +13,10 @@ class BookAPI extends RESTDataSource {
   async getBookById({ id }) {
     return await this.get(`books/${id}`);
   }
-
+  async getBooksByIds({ ids }) {
+    const query = ids.map(id => `id=${id}`).join("&");
+    return await this.get(`books?${query}`);
+  }
   async getAuthorById({ ids }) {
     return await Promise.all(ids.map(id => this.get(`books/${id}`)));
   }
