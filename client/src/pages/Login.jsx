@@ -11,14 +11,12 @@ export const LOGIN_USER = gql`
   }
 `;
 
-export default function Login({ handleAuth }) {
+export default function Login({ handleLogin }) {
   return (
     <Mutation
       mutation={LOGIN_USER}
       onCompleted={({ login }) => {
-        localStorage.setItem("token", login);
-        handleAuth({ auth: true });
-        history.push("/authors");
+        handleLogin({ login });
       }}
     >
       {(login, { loading, error }) => {

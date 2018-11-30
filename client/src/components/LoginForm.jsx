@@ -5,8 +5,8 @@ class LoginPage extends Component {
   constructor() {
     super();
     this.state = {
-      username: "",
-      password: "",
+      username: "admin",
+      password: "admin",
       error: null
     };
 
@@ -53,7 +53,7 @@ class LoginPage extends Component {
     return (
       <>
         <div
-          className="card mx-auto"
+          className="card bg-secondary text-white mx-auto"
           style={{ marginTop: "100px", width: "30rem" }}
         >
           <div className="card-body">
@@ -88,7 +88,7 @@ class LoginPage extends Component {
                 />
               </FormGroup>
 
-              <button className="btn btn-primary w-100" type="submit">
+              <button className="btn btn-primary mt-2 w-100" type="submit">
                 Войти
               </button>
               {this.props.error && (

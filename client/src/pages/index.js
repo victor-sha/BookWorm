@@ -15,18 +15,23 @@ export default class Pages extends React.Component {
     auth: !!localStorage.getItem("token") || false
   };
 
-  handleAuth = ({ auth }) => {
-    this.setState({ auth });
+  handleLogin = ({ login }) => {
+    this.setState({ auth: true });
+    localStorage.setItem("token", login);
+    history.push("/authors");
+  };
+
+  handleLogout = () => {
+    this.setState({ auth: false });
     localStorage.removeItem("token");
     history.push("/login");
   };
 
   render() {
-    console.log(this.state.auth);
     return (
       <>
         {this.state.auth ? (
-          <PageContainer handleAuth={this.handleAuth}>
+          <PageContainer handleLogout={this.handleLogout}>
             <Route exact path="/" component={Home} />
             <Route exact path="/books/:id" component={Book} />
             <Route exact path="/books" component={Books} />
@@ -35,7 +40,7 @@ export default class Pages extends React.Component {
           </PageContainer>
         ) : (
           <>
-            <Login handleAuth={this.handleAuth} />
+            <Login handleLogin={this.handleLogin} />
             <Redirect to="login" />
           </>
         )}
