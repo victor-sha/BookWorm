@@ -9,7 +9,9 @@ const GET_BOOK_DETAILES = gql`
   query getBookDetailes($bookId: ID!) {
     book(id: $bookId) {
       id
-      author
+      author {
+        fullName
+      }
       name
       publicationDate
       description
@@ -26,7 +28,7 @@ const Author = ({ match }) => {
 
         return (
           <>
-            <BookCard {...data.book} />
+            <BookCard {...data.book} author={data.book.author.fullName} />
             <CommentsList />
           </>
         );

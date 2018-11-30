@@ -28,6 +28,11 @@ module.exports = {
   },
   Author: {
     books: async ({ booksIds }, _, { dataSources }) =>
-      dataSources.bookAPI.getBooksByIds({ ids: booksIds })
+      dataSources.bookAPI.getBooksByIds({ ids: booksIds }),
+    countBooks: async ({ booksIds }, _) => booksIds.length || 0
+  },
+  Book: {
+    author: async ({ authorId }, _, { dataSources }) =>
+      dataSources.authorAPI.getAuthorById({ id: authorId })
   }
 };

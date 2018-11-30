@@ -34,7 +34,7 @@ const typeDefs = gql`
     id: ID!
     name: String!
     authorId: ID!
-    author: String
+    author: Author
     publicationDate: String
     description: String
   }

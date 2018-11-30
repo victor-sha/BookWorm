@@ -33,7 +33,9 @@ const BOOKS = gql`
       id
       name
       publicationDate
-      author
+      author {
+        fullName
+      }
     }
   }
 `;
@@ -50,7 +52,10 @@ const Books = () => (
           striped
           hover
           keyField="id"
-          data={data.books}
+          data={data.books.map(book => ({
+            ...book,
+            author: book.author.fullName
+          }))}
           columns={columns}
           rowEvents={{ onClick: redirectOnClick }}
           defaultSorted={defaultSorted}
