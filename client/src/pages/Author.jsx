@@ -13,6 +13,11 @@ const GET_AUTHOR_DETAILES = gql`
       firstName
       lastName
       biography
+      books {
+        id
+        name
+        publicationDate
+      }
     }
   }
 `;
@@ -39,56 +44,37 @@ const defaultSorted = [
   }
 ];
 
-const BOOKS = gql`
-  query getBookDetailes($bookId: ID!) {
-    book(id: $bookId) {
-      id
-      name
-      publicationDate
-    }
-  }
-`;
-
 const Author = ({ match }) => {
   return (
-    <>
-      <Query
-        query={GET_AUTHOR_DETAILES}
-        variables={{ authorId: match.params.id }}
-      >
-        {({ data, loading, error }) => {
-          if (loading) return <p>Loading...</p>;
-          if (error) return <p>ERROR: {error.message}</p>;
+    <Query
+      query={GET_AUTHOR_DETAILES}
+      variables={{ authorId: match.params.id }}
+    >
+      {({ data, loading, error }) => {
+        if (loading) return <p>Loading...</p>;
+        if (error) return <p>ERROR: {error.message}</p>;
 
-          return <AuthorCard {...data.author} />;
-        }}
-      </Query>
-      <Container>
-        <h2 className="mt-2">Книги автора</h2>
-        <Query query={BOOKS} variables={{ bookId: 1 }}>
-          {({ loading, error, data }) => {
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error :(</p>;
-
-            return (
-              <BootstrapTable
-                bootstrap4
-                striped
-                hover
-                keyField="id"
-                data={[data.book]}
-                columns={columns}
-                rowEvents={{
-                  onClick: (_, { id }, __) => history.push(`/books/${id}`)
-                }}
-                defaultSorted={defaultSorted}
-                filter={filterFactory()}
-              />
-            );
-          }}
-        </Query>
-      </Container>
-    </>
+        return (
+          <Container>
+            <AuthorCard {...data.author} />
+            <h2 className="mt-4">Книги автора</h2>
+            <BootstrapTable
+              bootstrap4
+              striped
+              hover
+              keyField="id"
+              data={data.author.books}
+              columns={columns}
+              rowEvents={{
+                onClick: (_, { id }, __) => history.push(`/books/${id}`)
+              }}
+              defaultSorted={defaultSorted}
+              filter={filterFactory()}
+            />
+          </Container>
+        );
+      }}
+    </Query>
   );
 };
 
