@@ -3,11 +3,10 @@ import PropTypes from "prop-types";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { compose, withStateHandlers } from "recompose";
-import { Button, Container } from "reactstrap";
+import { Container } from "reactstrap";
 
 import Comment from "./Comment";
-
-const commentsArr = [{ id: 1 }, { id: 2 }];
+import PaginationButtons from "./PaginationButtons";
 
 const GET_BOOKS_COMMENTS = gql`
   query getCommentsByPage($pageNum: Int) {
@@ -20,7 +19,7 @@ const GET_BOOKS_COMMENTS = gql`
   }
 `;
 
-const CommentsList = ({ pageNum, firstButtonClick, secondButtonClick }) => (
+const CommentsList = ({ pageNum, handlePageBtnClick, countComments }) => (
   <Query query={GET_BOOKS_COMMENTS} variables={{ pageNum }}>
     {({ data: { comments }, loading, error }) => {
       if (loading) return <p>Loading...</p>;
@@ -34,20 +33,12 @@ const CommentsList = ({ pageNum, firstButtonClick, secondButtonClick }) => (
               <Comment author={author} comment={comment} date={date} />
             </div>
           ))}
-          <p className="float-right mt-2">
-            <Button
-              color={pageNum === 1 ? "primary" : "light"}
-              onClick={firstButtonClick}
-            >
-              1
-            </Button>
-            <Button
-              color={pageNum === 2 ? "primary" : "light"}
-              onClick={secondButtonClick}
-            >
-              2
-            </Button>
-          </p>
+          <PaginationButtons
+            countComments={countComments}
+            pageSize={10}
+            currentPage={pageNum}
+            handlePageBtnClick={handlePageBtnClick}
+          />
         </Container>
       );
     }}
@@ -55,11 +46,12 @@ const CommentsList = ({ pageNum, firstButtonClick, secondButtonClick }) => (
 );
 
 CommentsList.defaultProps = {
-  comments: commentsArr
+  pageNum: 1
 };
 
 CommentsList.propTypes = {
-  comments: PropTypes.array
+  pageNum: PropTypes.number,
+  countComments: PropTypes.number.isRequired
 };
 
 export default compose(
@@ -68,11 +60,8 @@ export default compose(
       pageNum: initialPageNum
     }),
     {
-      firstButtonClick: () => () => ({
-        pageNum: 1
-      }),
-      secondButtonClick: () => () => ({
-        pageNum: 2
+      handlePageBtnClick: () => value => ({
+        pageNum: value
       })
     }
   )

@@ -35,7 +35,8 @@ const typeDefs = gql`
     name: String!
     authorId: ID!
     author: Author
-    publicationDate: String
+    countComments: Int!
+    publicationDate: Int
     description: String
   }
 

@@ -27,7 +27,7 @@ BookCard.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
-  publicationDate: PropTypes.string.isRequired,
+  publicationDate: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired
 };
 

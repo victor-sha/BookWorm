@@ -33,6 +33,8 @@ module.exports = {
   },
   Book: {
     author: async ({ authorId }, _, { dataSources }) =>
-      dataSources.authorAPI.getAuthorById({ id: authorId })
+      dataSources.authorAPI.getAuthorById({ id: authorId }),
+    countComments: async (_, __, { dataSources }) =>
+      dataSources.commentAPI.getAllComments().then(res => res.length)
   }
 };

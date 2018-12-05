@@ -13,6 +13,7 @@ const GET_BOOK_DETAILES = gql`
       author {
         fullName
       }
+      countComments
       name
       publicationDate
       description
@@ -30,7 +31,7 @@ const Author = ({ match }) => {
         return (
           <>
             <BookCard {...data.book} author={data.book.author.fullName} />
-            <CommentsList />
+            <CommentsList countComments={data.book.countComments} />
           </>
         );
       }}
