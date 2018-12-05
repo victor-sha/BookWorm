@@ -34,7 +34,7 @@ export default class Pages extends React.Component {
             <Route exact path="/books" component={Books} />
             <Route exact path="/authors/:id" component={Author} />
             <Route exact path="/authors" component={Authors} />
-            {/* <Redirect to="/authors" /> */}
+            <Redirect to="/authors" />
           </PageContainer>
         ) : (
           <>
